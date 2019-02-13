@@ -40,6 +40,13 @@
   <%= Attendance.where(event_id: @event.id).count %>
 </p>
 
+<% if current_user.id != @event.admin_id %>
+    <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Join the Event</a>
+<% end %>
 
+
+
+<p>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+</p>
