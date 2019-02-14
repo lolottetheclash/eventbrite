@@ -7,12 +7,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @attendance.user %>
+  <%= @attendance.guest_id %>
 </p>
 
 <p>
   <strong>Event:</strong>
-  <%= @attendance.event %>
+  <%= @attendance.event_id %>
 </p>
 
 <%= link_to 'Edit', edit_attendance_path(@attendance) %> |

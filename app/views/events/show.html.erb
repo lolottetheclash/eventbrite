@@ -40,9 +40,30 @@
   <%= Attendance.where(event_id: @event.id).count %>
 </p>
 
-<% if current_user.id != @event.admin_id %>
-    <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Join the Event</a>
-<% end %>
+  <% if current_user.id != @event.admin_id %>
+    <div><%= form_tag subscription_path do %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+           <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <label class="amount">
+          <p> Pour rejoindre l'événement "<%= @event.title %>", merci de régler la somme de <%= @event.price %>€</p>
+        </label>
+      </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Payment for - <%= @event.title %> -"
+            data-amount="<%= (@event.price.to_f)*100 %>"
+            data-currency="eur"
+            data-locale="auto"></script> 
+    <% end %>
+    </div>
+  <% else %>
+    <p class="text-center">  <%= link_to "My event", { :controller => "attendances", :action => "show"}, class: "btn btn-success" %> </p>
+  <% end %>
 
 
 

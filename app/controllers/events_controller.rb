@@ -66,6 +66,45 @@ class EventsController < ApplicationController
     end
   end
 
+
+  def subscribe
+    @event = Event.find(params[:id])
+    #vérifie que le participant n'est pas déjà inscrit ou bien n'est pas l'organisateur
+    if
+    Attendance.where(guest_id: current_user.id, event_id: @event.id).exists?
+    flash[:error] = "Vous participez déjà à l'événement !" 
+    redirect_to @event
+    end
+
+#sinon, déclenche le formulaire pris en ligne sur Stripe avec infos CB
+
+    @amount =  @event.price
+
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
+
+
+    charge = Stripe::Charge.create(
+    :customer    => customer.id,
+    :amount      => @amount,
+    :description => 'Rails Stripe customer',
+    :currency    => 'eur'
+   )
+
+   @attendance = Attendance.create(stripe_customer_id: rand(200..1000), guest_id: current_user.id, event_id: @event.id)
+      puts 
+      flash[:success] = "Vous participez à l'événement !" 
+      redirect_to @event
+
+
+#affiche les erreurs si numéro de CB inexistant par exemple
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to @event
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event

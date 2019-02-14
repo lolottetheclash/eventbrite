@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'events#index'
-  #get 'home/secret'
+#mise en place de la route pour compléter le formulaire d'inscription ) l'évenement par CB
+  post "events/subscribe/:id", to: "events#subscribe", as: "subscription"
   devise_for :users
   resources :attendances
   resources :events

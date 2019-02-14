@@ -61,6 +61,22 @@ class AttendancesController < ApplicationController
     end
   end
 
+
+  #def suscribe
+   # @attendance = Attendance.find(params[:id])
+   # if 
+   # @attendance.guests.include? current_user
+    #flash[:error] = "Vous participez déjà à l'événement !" 
+    #redirect_to @attendance
+    #else
+    #@attendance.guests << current_user
+    #flash[:success] = "Vous participez à l'événement !" 
+    #redirect_to @attendance
+    #end
+  #end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_attendance
