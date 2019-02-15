@@ -17,6 +17,6 @@ end
 event = Event.create!(start_date: Faker::Date.forward(30), duration: rand(1..10)*5, title: Faker::Book.title, description: Faker::Lorem.paragraph_by_chars(60), price: Faker::Number.number(3), location: Faker::Address.city, admin_id: User.all.sample.id)
 end
 
-200.times do
+40.times do
 attendance = Attendance.create!(stripe_customer_id: Faker::Number.number(2), guest_id: User.all.sample.id, event_id: Event.all.sample.id)
 end

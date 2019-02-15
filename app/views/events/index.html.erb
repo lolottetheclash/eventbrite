@@ -40,8 +40,6 @@
               <p><%= event.description %></p>
               <td>Location: <%= event.location %> - Price: <%= event.price %>€</td></br>
               <td><%= link_to 'Show', event %></td>
-              <td><%= link_to 'Edit', edit_event_path(event) %></td>
-              <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </div>
           <% end%>     
         </div>

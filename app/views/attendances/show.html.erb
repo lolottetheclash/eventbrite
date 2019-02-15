@@ -1,19 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Stripe customer:</strong>
-  <%= @attendance.stripe_customer_id %>
-</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First_name</th>
+      <th scope="col">Last_name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>User:</strong>
-  <%= @attendance.guest_id %>
-</p>
+  <tbody>
 
-<p>
-  <strong>Event:</strong>
-  <%= @attendance.event_id %>
-</p>
+    <div class="container">
+	     <% i = 1  %>
+	        <% @attendances.each do |attendance| %>
+        		<div class="row">
+	            	<tr>
+				      <th scope="row"><%= "#{i}" %>
+				      <td><%= User.find(Attendance.find(attendance.id).guest_id).first_name %></td>
+				      <td><%= User.find(Attendance.find(attendance.id).guest_id).last_name %></td>
+				      <td><%= User.find(Attendance.find(attendance.id).guest_id).email %></td>
+						<% i += 1 %>
+				    </tr>
+		        </div>
+	        <% end%>     
+        </div>
+	</div>
 
-<%= link_to 'Edit', edit_attendance_path(@attendance) %> |
+	<p class="text-center">  <%= link_to 'Edit the event', edit_event_path(Event.find(@attendance.event_id)), class: "btn btn-success" %></p>
+  </tbody>
+
+</table>
+
+
 <%= link_to 'Back', attendances_path %>
