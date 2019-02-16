@@ -1,65 +1,119 @@
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
-  </head>
+<body>
 
-  <body>
+    <header class="header-transparent" id="header-main">
+    </header>
 
-    <main role="main">
+    <main>
+        <section class="slice bg-gradient-secondary overflow-hidden">
+            <div class="container position-relative zindex-100">
+                <div class="mb-md text-center">
+                    <h3 class="mt-4">Welcome to our <strong class="font-weight-700">events</strong></h3>
+                    <div class="fluid-paragraph text-center mt-4">
+                        <p class="lead lh-180">We made a selection for You with our best events on earth. We hope you will find your happiness with us... Now, it's time to enjoy!</p>
+                    </div>
+                </div>
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <div class="container">
-          <h1 class="display-3">Bienvenue sur tous les events!</h1>
-          <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-          <p><a class="btn btn-primary btn-lg" href="/users/sign_up" role="button">Inscris-toi! &raquo;</a></p>
-        </div>
-      </div>
-
-
-
-
-
-      <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-          <% @events.each do |event| %>
-            <div class="col-md-4 mb-4" >
-              <%if event.avatar.attached?%>
-              <p><%= image_tag event.avatar, alt: 'avatar' %></p>
-              <% end %>
-              <h2><%= event.title %></h2>
-              <p><%= event.start_date %></p>
-              <p>Duration: <%= event.duration %> minutes.</p>
-              <p><%= event.description %></p>
-              <td>Location: <%= event.location %> - Price: <%= event.price %>€</td></br>
-              <td><%= link_to 'Show', event %></td>
+     
+                <div class="row">
+                    <% @events.each do |event| %>
+                        <div class="col-lg-4">
+                            <div class="card shadow border-0 mb-4">
+                                <div class="card-body py-5">
+                                    <div class="d-flex align-items-start">
+                                        <div class="icon icon-shape icon-green rounded-circle">
+                                            <i class="fab fa-html5"></i>
+                                        </div>
+                                        <div class="icon-text pl-4">
+                                            <%if event.avatar.attached?%>
+                                                  <p><%= image_tag event.avatar, alt: 'avatar' %></p>
+                                            <% end %>
+                                            <h5 class="font-weight-bold"><%= event.title %></h5>
+                                        </div>
+                                    </div>
+                                    <p class="mt-4"><%= event.description %></p>
+                                    <p class="mt-4">Location: <%= event.location %> - Price: <%= event.price %>€</p>
+                                    <p class="mt-4"><%= link_to 'Show', event %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% end%>
+                </div>
             </div>
-          <% end%>     
-        </div>
-        <hr>
-      </div>
+        </section> 
     </main>
 
-    <footer class="container">
+
+
+    <footer class="footer footer-dark bg-gradient-primary footer-rotate">
+        <div class="container">
+            <div class="row pt-md">
+                <div class="col-lg-2 col-6 col-sm-4  mb-5 mb-lg-0">
+                    <h6 class="heading mb-3">Account</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="./pages/account-profile.html">Profile</a>
+                        </li>
+                        <li><a href="./pages/account-settings.html">Settings</a>
+                        </li>
+                        <li><a href="./pages/account-billing.html">Billing</a>
+                        </li>
+                        <li><a href="./pages/account-notifications.html">Notifications</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0">
+                    <h6 class="heading mb-3">About</h6>
+                    <ul class="list-unstyled text-small">
+                        <li><a href="#">Services</a>
+                        </li>
+                        <li><a href="#">Contact</a>
+                        </li>
+                        <li><a href="#">Careers</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-sm-4 mb-5 mb-lg-0">
+                    <h6 class="heading mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Terms</a>
+                        </li>
+                        <li><a href="#">Privacy</a>
+                        </li>
+                        <li><a href="#">Support</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-md-between py-4 mt-4 delimiter-top">
+                <div class="col-md-6">
+                    <div class="copyright text-sm font-weight-bold text-center text-md-left">
+                        &copy; 2018 <a href="https://webpixels.io/" class="font-weight-bold" target="_blank">Webpixels</a>. All rights reserved.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://dribbble.com/webpixels" target="_blank">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="https://instagram.com/webpixelsofficial" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/webpixels" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://facebook.com/webpixels" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </footer>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-  </body>
-</html>
-

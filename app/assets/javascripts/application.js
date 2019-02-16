@@ -14,3 +14,9 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+//= require jquery/dist/jquery.min
+//= require bootstrap/dist/js/bootstrap.bundle.min
+//= require in-view/dist/in-view.min
+//= require highlight.js/lib/highlight
+//= require theme.min
