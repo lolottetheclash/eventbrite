@@ -1,5 +1,7 @@
 class Event < ApplicationRecord
 		has_many :attendances	
+		has_one_attached :avatar
+
 
 		#la ligne du bas est enlevée
 		#has_many :guests, through: :attendances

@@ -34,6 +34,9 @@
         <div class="row">
           <% @events.each do |event| %>
             <div class="col-md-4 mb-4" >
+              <%if event.avatar.attached?%>
+              <p><%= image_tag event.avatar, alt: 'avatar' %></p>
+              <% end %>
               <h2><%= event.title %></h2>
               <p><%= event.start_date %></p>
               <p>Duration: <%= event.duration %> minutes.</p>
